@@ -8,5 +8,10 @@
 
 import Foundation
 
-print("Hello, World!")
+var a = Variable(5)
+var b = Variable(10)
+var c = Variable(15)
+var d = a / b
+d.backward()
+print(b)
 
