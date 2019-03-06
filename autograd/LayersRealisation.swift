@@ -134,3 +134,17 @@ class ExpLayer: UnaryLayer  {
         return "ExpLayer"
     }
 }
+
+class TanLayer: UnaryLayer  {
+    override func forward() -> Variable {
+        return Variable(tan(leftVariable!.value), self)
+    }
+    
+    override func backward(with variableFromAbove: Variable) {
+        leftVariable!.gradient +=  (1 / (cos(leftVariable!.value) * cos(leftVariable!.value))) * variableFromAbove.gradient
+        super.chainableInternalBackward()
+    }
+    override var description: String {
+        return "TanLayer"
+    }
+}

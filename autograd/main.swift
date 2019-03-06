@@ -11,9 +11,10 @@ import Foundation
 var a = Variable(1)
 var b = Variable(10)
 var c = Variable(15)
-var d = exp(a)
+var d = tan(exp(a))
 d.backward()
 print(a)
 print(b)
 print(c)
+
 

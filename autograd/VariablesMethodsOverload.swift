@@ -40,13 +40,17 @@ func cos(_ variable: Variable) -> Variable {
     return parentLayer.forward()
 }
 
-
 func sqrt(_ variable: Variable) -> Variable {
     let parentLayer = SqrtLayer(variable)
     return parentLayer.forward()
 }
 
-func exp(_ variable: Variable) -> Variable{
+func exp(_ variable: Variable) -> Variable {
     let parentLayer = ExpLayer(variable)
+    return parentLayer.forward()
+}
+
+func tan(_ variable: Variable) -> Variable {
+    let parentLayer = TanLayer(variable)
     return parentLayer.forward()
 }
