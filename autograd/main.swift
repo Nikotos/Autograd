@@ -11,7 +11,7 @@ import Foundation
 var a = Variable(5)
 var b = Variable(10)
 var c = Variable(15)
-var d = a / b
+var d = a * a
 d.backward()
-print(b)
+print(a)
 

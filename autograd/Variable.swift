@@ -10,7 +10,7 @@ import Foundation
 
 class Variable: CustomStringConvertible {
     var value = Float(0)
-    var gradient = Float(1)
+    var gradient = Float(0)
     var parentLayer: Layer?
     
     init(_ value: Float) {
@@ -27,6 +27,11 @@ class Variable: CustomStringConvertible {
     }
     
     func backward() {
+        self.gradient = 1
+        parentLayer?.backward(with: self)
+    }
+    
+    func chainableInternalBackward() {
         parentLayer?.backward(with: self)
     }
     

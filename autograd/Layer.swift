@@ -41,10 +41,10 @@ class PlusLayer: Layer, CustomStringConvertible  {
     }
     
     func backward(with variableFromAbove: Variable) {
-        leftVariable.gradient = 1 * variableFromAbove.gradient
-        rightVariable.gradient = 1 * variableFromAbove.gradient
-        leftVariable.backward()
-        rightVariable.backward()
+        leftVariable.gradient += 1 * variableFromAbove.gradient
+        rightVariable.gradient += 1 * variableFromAbove.gradient
+        leftVariable.chainableInternalBackward()
+        rightVariable.chainableInternalBackward()
     }
     
     var description: String {
@@ -66,10 +66,10 @@ class MulLayer: Layer, CustomStringConvertible {
     }
     
     func backward(with variableFromAbove: Variable) {
-        leftVariable.gradient =  rightVariable.value * variableFromAbove.gradient
-        rightVariable.gradient = leftVariable.value * variableFromAbove.gradient
-        leftVariable.backward()
-        rightVariable.backward()
+        leftVariable.gradient +=  rightVariable.value * variableFromAbove.gradient
+        rightVariable.gradient += leftVariable.value * variableFromAbove.gradient
+        leftVariable.chainableInternalBackward()
+        rightVariable.chainableInternalBackward()
     }
     
     var description: String {
@@ -95,10 +95,10 @@ class DivLayer: Layer, CustomStringConvertible {
     }
     
     func backward(with variableFromAbove: Variable) {
-        leftVariable.gradient =  (1 / rightVariable.value) * variableFromAbove.gradient
-        rightVariable.gradient = -(1 / (rightVariable.value * rightVariable.value)) * variableFromAbove.gradient
-        leftVariable.backward()
-        rightVariable.backward()
+        leftVariable.gradient +=  (1 / rightVariable.value) * variableFromAbove.gradient
+        rightVariable.gradient += -(1 / (rightVariable.value * rightVariable.value)) * variableFromAbove.gradient
+        leftVariable.chainableInternalBackward()
+        rightVariable.chainableInternalBackward()
     }
     
     var description: String {
