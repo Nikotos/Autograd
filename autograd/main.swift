@@ -8,11 +8,12 @@
 
 import Foundation
 
-var a = Variable(4)
+var a = Variable(1)
 var b = Variable(10)
 var c = Variable(15)
-var d = sqrt(a)
+var d = exp(a)
 d.backward()
 print(a)
 print(b)
+print(c)
 

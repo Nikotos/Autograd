@@ -27,7 +27,7 @@ extension Layer {
     }
 }
 
-class PlusLayer: Layer, CustomStringConvertible  {
+class BinaryLayer: Layer, CustomStringConvertible {
     var leftVariable: Variable?
     var rightVariable: Variable?
     
@@ -36,183 +36,42 @@ class PlusLayer: Layer, CustomStringConvertible  {
         self.rightVariable = variableTwo
     }
     
-    func forward() -> Variable {
-        return Variable(leftVariable!.value + rightVariable!.value, self)
-    }
+    func forward() -> Variable {return Variable(0)}
     
-    func backward(with variableFromAbove: Variable) {
-        leftVariable!.gradient += 1 * variableFromAbove.gradient
-        rightVariable!.gradient += 1 * variableFromAbove.gradient
+    func backward(with variableFromAbove: Variable) {}
+    
+    func chainableInternalBackward() {
         leftVariable!.chainableInternalBackward()
         rightVariable!.chainableInternalBackward()
     }
     
     var description: String {
-        return "PlusLayer"
-    }
-}
-
-class MinusLayer: Layer, CustomStringConvertible  {
-    var leftVariable: Variable?
-    var rightVariable: Variable?
-    
-    required init(_ variableOne:Variable, _ variableTwo:Variable) {
-        self.leftVariable = variableOne
-        self.rightVariable = variableTwo
-    }
-    
-    func forward() -> Variable {
-        return Variable(leftVariable!.value - rightVariable!.value, self)
-    }
-    
-    func backward(with variableFromAbove: Variable) {
-        leftVariable!.gradient += 1 * variableFromAbove.gradient
-        rightVariable!.gradient += 1 * variableFromAbove.gradient
-        leftVariable!.chainableInternalBackward()
-        rightVariable!.chainableInternalBackward()
-    }
-    
-    var description: String {
-        return "minusLayer"
-    }
-}
-
-
-
-class MulLayer: Layer, CustomStringConvertible {
-    var leftVariable: Variable?
-    var rightVariable: Variable?
-    
-    required init(_ variableOne:Variable, _ variableTwo:Variable) {
-        self.leftVariable = variableOne
-        self.rightVariable = variableTwo
-    }
-    func forward() -> Variable {
-        return Variable(leftVariable!.value * rightVariable!.value, self)
-    }
-    
-    func backward(with variableFromAbove: Variable) {
-        leftVariable!.gradient +=  rightVariable!.value * variableFromAbove.gradient
-        rightVariable!.gradient += leftVariable!.value * variableFromAbove.gradient
-        leftVariable!.chainableInternalBackward()
-        rightVariable!.chainableInternalBackward()
-    }
-    
-    var description: String {
-        return "MulLayer"
+        return "DefaultBinaryLayer"
     }
 
 }
 
-
-
-
-
-class DivLayer: Layer, CustomStringConvertible {
-    var leftVariable: Variable?
-    var rightVariable: Variable?
-    
-    required init(_ variableOne:Variable, _ variableTwo:Variable) {
-        self.leftVariable = variableOne
-        self.rightVariable = variableTwo
-    }
-    func forward() -> Variable {
-        return Variable(leftVariable!.value / rightVariable!.value, self)
-    }
-    
-    func backward(with variableFromAbove: Variable) {
-        leftVariable!.gradient +=  (1 / rightVariable!.value) * variableFromAbove.gradient
-        rightVariable!.gradient += -(1 / (rightVariable!.value * rightVariable!.value)) * variableFromAbove.gradient
-        leftVariable!.chainableInternalBackward()
-        rightVariable!.chainableInternalBackward()
-    }
-    
-    var description: String {
-        return "MulLayer"
-    }
-    
-}
-
-class SinLayer: Layer, CustomStringConvertible {
+class UnaryLayer: Layer, CustomStringConvertible {
     // here we work only with left variable
     // right is just nil
     var leftVariable: Variable?
     var rightVariable: Variable?
-    
-    
-    init(_ variable: Variable) {
-        self.leftVariable = variable
-    }
-    // just to conform protocol
-    required init(_ variableOne:Variable, _ variableTwo:Variable) {}
-    
-    func forward() -> Variable {
-        return Variable(sin(leftVariable!.value), self)
-    }
-    
-    func backward(with variableFromAbove: Variable) {
-        leftVariable!.gradient +=  cos(leftVariable!.value) * variableFromAbove.gradient
-        leftVariable!.chainableInternalBackward()
-    }
-    
-    var description: String {
-        return "SinLayer"
-    }
-    
-}
-
-class CosLayer: Layer, CustomStringConvertible {
-    // here we work only with left variable
-    // right is just nil
-    var leftVariable: Variable?
-    var rightVariable: Variable?
-    
+    required init(_ variableOne:Variable, _ variableTwo:Variable) {} // just to conform protocol
     
     init(_ variable: Variable) {
         self.leftVariable = variable
     }
-    // just to conform protocol
-    required init(_ variableOne:Variable, _ variableTwo:Variable) {}
     
-    func forward() -> Variable {
-        return Variable(cos(leftVariable!.value), self)
-    }
+    func forward() -> Variable {return Variable(0)}
     
-    func backward(with variableFromAbove: Variable) {
-        leftVariable!.gradient +=  -sin(leftVariable!.value) * variableFromAbove.gradient
+    func backward(with variableFromAbove: Variable) {}
+    
+    func chainableInternalBackward() {
         leftVariable!.chainableInternalBackward()
     }
     
     var description: String {
-        return "CosLayer"
-    }
-    
-}
-
-class SqrtLayer: Layer, CustomStringConvertible {
-    // here we work only with left variable
-    // right is just nil
-    var leftVariable: Variable?
-    var rightVariable: Variable?
-    
-    
-    init(_ variable: Variable) {
-        self.leftVariable = variable
-    }
-    // just to conform protocol
-    required init(_ variableOne:Variable, _ variableTwo:Variable) {}
-    
-    func forward() -> Variable {
-        return Variable(sqrt(leftVariable!.value), self)
-    }
-    
-    func backward(with variableFromAbove: Variable) {
-        leftVariable!.gradient +=  -1 / sqrt(4 * leftVariable!.value) * variableFromAbove.gradient
-        leftVariable!.chainableInternalBackward()
-    }
-    
-    var description: String {
-        return "CosLayer"
+        return "DefaultUnaryLayer"
     }
     
 }
