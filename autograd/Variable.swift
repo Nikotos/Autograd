@@ -47,6 +47,11 @@ func +(left: Variable, right: Variable) -> Variable {
     return parentLayer.forward()
 }
 
+func -(left: Variable, right: Variable) -> Variable {
+    let parentLayer = MinusLayer(left, right)
+    return parentLayer.forward()
+}
+
 func *(left: Variable, right: Variable) -> Variable {
     let parentLayer = MulLayer(left, right)
     return parentLayer.forward()
@@ -56,3 +61,5 @@ func /(left: Variable, right: Variable) -> Variable {
     let parentLayer = DivLayer(left,right)
     return parentLayer.forward()
 }
+
+

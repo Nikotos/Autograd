@@ -11,7 +11,8 @@ import Foundation
 var a = Variable(5)
 var b = Variable(10)
 var c = Variable(15)
-var d = a * a
+var d = (a + b) * c
 d.backward()
 print(a)
+print(b)
 
