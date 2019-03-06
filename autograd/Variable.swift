@@ -62,4 +62,13 @@ func /(left: Variable, right: Variable) -> Variable {
     return parentLayer.forward()
 }
 
+func sin(_ variable: Variable) -> Variable {
+    let parentLayer = SinLayer(variable)
+    return parentLayer.forward()
+}
 
+
+func cos(_ variable: Variable) -> Variable {
+    let parentLayer = CosLayer(variable)
+    return parentLayer.forward()
+}

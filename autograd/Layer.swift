@@ -10,8 +10,8 @@ import Foundation
 
 
 protocol Layer {
-    var leftVariable: Variable { get set }
-    var rightVariable: Variable { get set }
+    var leftVariable: Variable? { get set }
+    var rightVariable: Variable? { get set }
     
     init(_ variableOne:Variable, _ variableTwo:Variable)
     func forward() -> Variable
@@ -22,14 +22,14 @@ protocol Layer {
 extension Layer {
     func printTree() {
         print(self)
-        leftVariable.printTree()
-        rightVariable.printTree()
+        leftVariable?.printTree()
+        rightVariable?.printTree()
     }
 }
 
 class PlusLayer: Layer, CustomStringConvertible  {
-    var leftVariable: Variable
-    var rightVariable: Variable
+    var leftVariable: Variable?
+    var rightVariable: Variable?
     
     required init(_ variableOne:Variable, _ variableTwo:Variable) {
         self.leftVariable = variableOne
@@ -37,14 +37,14 @@ class PlusLayer: Layer, CustomStringConvertible  {
     }
     
     func forward() -> Variable {
-        return Variable(leftVariable.value + rightVariable.value, self)
+        return Variable(leftVariable!.value + rightVariable!.value, self)
     }
     
     func backward(with variableFromAbove: Variable) {
-        leftVariable.gradient += 1 * variableFromAbove.gradient
-        rightVariable.gradient += 1 * variableFromAbove.gradient
-        leftVariable.chainableInternalBackward()
-        rightVariable.chainableInternalBackward()
+        leftVariable!.gradient += 1 * variableFromAbove.gradient
+        rightVariable!.gradient += 1 * variableFromAbove.gradient
+        leftVariable!.chainableInternalBackward()
+        rightVariable!.chainableInternalBackward()
     }
     
     var description: String {
@@ -52,9 +52,9 @@ class PlusLayer: Layer, CustomStringConvertible  {
     }
 }
 
-class PlusLayer: Layer, CustomStringConvertible  {
-    var leftVariable: Variable
-    var rightVariable: Variable
+class MinusLayer: Layer, CustomStringConvertible  {
+    var leftVariable: Variable?
+    var rightVariable: Variable?
     
     required init(_ variableOne:Variable, _ variableTwo:Variable) {
         self.leftVariable = variableOne
@@ -62,40 +62,40 @@ class PlusLayer: Layer, CustomStringConvertible  {
     }
     
     func forward() -> Variable {
-        return Variable(leftVariable.value - rightVariable.value, self)
+        return Variable(leftVariable!.value - rightVariable!.value, self)
     }
     
     func backward(with variableFromAbove: Variable) {
-        leftVariable.gradient += 1 * variableFromAbove.gradient
-        rightVariable.gradient += 1 * variableFromAbove.gradient
-        leftVariable.chainableInternalBackward()
-        rightVariable.chainableInternalBackward()
+        leftVariable!.gradient += 1 * variableFromAbove.gradient
+        rightVariable!.gradient += 1 * variableFromAbove.gradient
+        leftVariable!.chainableInternalBackward()
+        rightVariable!.chainableInternalBackward()
     }
     
     var description: String {
-        return "PlusLayer"
+        return "minusLayer"
     }
 }
 
 
 
 class MulLayer: Layer, CustomStringConvertible {
-    var leftVariable: Variable
-    var rightVariable: Variable
+    var leftVariable: Variable?
+    var rightVariable: Variable?
     
     required init(_ variableOne:Variable, _ variableTwo:Variable) {
         self.leftVariable = variableOne
         self.rightVariable = variableTwo
     }
     func forward() -> Variable {
-        return Variable(leftVariable.value * rightVariable.value, self)
+        return Variable(leftVariable!.value * rightVariable!.value, self)
     }
     
     func backward(with variableFromAbove: Variable) {
-        leftVariable.gradient +=  rightVariable.value * variableFromAbove.gradient
-        rightVariable.gradient += leftVariable.value * variableFromAbove.gradient
-        leftVariable.chainableInternalBackward()
-        rightVariable.chainableInternalBackward()
+        leftVariable!.gradient +=  rightVariable!.value * variableFromAbove.gradient
+        rightVariable!.gradient += leftVariable!.value * variableFromAbove.gradient
+        leftVariable!.chainableInternalBackward()
+        rightVariable!.chainableInternalBackward()
     }
     
     var description: String {
@@ -109,22 +109,22 @@ class MulLayer: Layer, CustomStringConvertible {
 
 
 class DivLayer: Layer, CustomStringConvertible {
-    var leftVariable: Variable
-    var rightVariable: Variable
+    var leftVariable: Variable?
+    var rightVariable: Variable?
     
     required init(_ variableOne:Variable, _ variableTwo:Variable) {
         self.leftVariable = variableOne
         self.rightVariable = variableTwo
     }
     func forward() -> Variable {
-        return Variable(leftVariable.value / rightVariable.value, self)
+        return Variable(leftVariable!.value / rightVariable!.value, self)
     }
     
     func backward(with variableFromAbove: Variable) {
-        leftVariable.gradient +=  (1 / rightVariable.value) * variableFromAbove.gradient
-        rightVariable.gradient += -(1 / (rightVariable.value * rightVariable.value)) * variableFromAbove.gradient
-        leftVariable.chainableInternalBackward()
-        rightVariable.chainableInternalBackward()
+        leftVariable!.gradient +=  (1 / rightVariable!.value) * variableFromAbove.gradient
+        rightVariable!.gradient += -(1 / (rightVariable!.value * rightVariable!.value)) * variableFromAbove.gradient
+        leftVariable!.chainableInternalBackward()
+        rightVariable!.chainableInternalBackward()
     }
     
     var description: String {
@@ -133,5 +133,57 @@ class DivLayer: Layer, CustomStringConvertible {
     
 }
 
+class SinLayer: Layer, CustomStringConvertible {
+    // here we work only with left variable
+    // right is just nil
+    var leftVariable: Variable?
+    var rightVariable: Variable?
+    
+    
+    init(_ variable: Variable) {
+        self.leftVariable = variable
+    }
+    // just to conform protocol
+    required init(_ variableOne:Variable, _ variableTwo:Variable) {}
+    
+    func forward() -> Variable {
+        return Variable(sin(leftVariable!.value), self)
+    }
+    
+    func backward(with variableFromAbove: Variable) {
+        leftVariable!.gradient +=  cos(leftVariable!.value) * variableFromAbove.gradient
+    }
+    
+    var description: String {
+        return "SinLayer"
+    }
+    
+}
 
+class CosLayer: Layer, CustomStringConvertible {
+    // here we work only with left variable
+    // right is just nil
+    var leftVariable: Variable?
+    var rightVariable: Variable?
+    
+    
+    init(_ variable: Variable) {
+        self.leftVariable = variable
+    }
+    // just to conform protocol
+    required init(_ variableOne:Variable, _ variableTwo:Variable) {}
+    
+    func forward() -> Variable {
+        return Variable(cos(leftVariable!.value), self)
+    }
+    
+    func backward(with variableFromAbove: Variable) {
+        leftVariable!.gradient +=  -sin(leftVariable!.value) * variableFromAbove.gradient
+    }
+    
+    var description: String {
+        return "CosLayer"
+    }
+    
+}
 
