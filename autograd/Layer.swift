@@ -152,6 +152,7 @@ class SinLayer: Layer, CustomStringConvertible {
     
     func backward(with variableFromAbove: Variable) {
         leftVariable!.gradient +=  cos(leftVariable!.value) * variableFromAbove.gradient
+        leftVariable!.chainableInternalBackward()
     }
     
     var description: String {
@@ -179,6 +180,7 @@ class CosLayer: Layer, CustomStringConvertible {
     
     func backward(with variableFromAbove: Variable) {
         leftVariable!.gradient +=  -sin(leftVariable!.value) * variableFromAbove.gradient
+        leftVariable!.chainableInternalBackward()
     }
     
     var description: String {
@@ -206,6 +208,7 @@ class SqrtLayer: Layer, CustomStringConvertible {
     
     func backward(with variableFromAbove: Variable) {
         leftVariable!.gradient +=  -1 / sqrt(4 * leftVariable!.value) * variableFromAbove.gradient
+        leftVariable!.chainableInternalBackward()
     }
     
     var description: String {
