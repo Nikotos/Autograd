@@ -54,3 +54,8 @@ func tan(_ variable: Variable) -> Variable {
     let parentLayer = TanLayer(variable)
     return parentLayer.forward()
 }
+
+func log(_ variable: Variable) -> Variable {
+    let parentLayer  = LogLayer(variable)
+    return parentLayer.forward()
+}

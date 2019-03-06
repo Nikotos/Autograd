@@ -148,3 +148,17 @@ class TanLayer: UnaryLayer  {
         return "TanLayer"
     }
 }
+
+class LogLayer: UnaryLayer {
+    override func forward() -> Variable {
+        return Variable(log(leftVariable!.value), self)
+    }
+    
+    override func backward(with variableFromAbove: Variable) {
+        leftVariable!.gradient +=  (1 / leftVariable!.value) * variableFromAbove.gradient
+        super.chainableInternalBackward()
+    }
+    override var description: String {
+        return "TanLayer"
+    }
+}
