@@ -8,10 +8,10 @@
 
 import Foundation
 
-var a = Variable(5)
+var a = Variable(4)
 var b = Variable(10)
 var c = Variable(15)
-var d = cos(a) + sin(a)
+var d = sqrt(a)
 d.backward()
 print(a)
 print(b)

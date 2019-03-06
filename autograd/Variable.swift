@@ -72,3 +72,9 @@ func cos(_ variable: Variable) -> Variable {
     let parentLayer = CosLayer(variable)
     return parentLayer.forward()
 }
+
+
+func sqrt(_ variable: Variable) -> Variable {
+    let parentLayer = SqrtLayer(variable)
+    return parentLayer.forward()
+}

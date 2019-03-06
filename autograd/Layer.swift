@@ -187,3 +187,29 @@ class CosLayer: Layer, CustomStringConvertible {
     
 }
 
+class SqrtLayer: Layer, CustomStringConvertible {
+    // here we work only with left variable
+    // right is just nil
+    var leftVariable: Variable?
+    var rightVariable: Variable?
+    
+    
+    init(_ variable: Variable) {
+        self.leftVariable = variable
+    }
+    // just to conform protocol
+    required init(_ variableOne:Variable, _ variableTwo:Variable) {}
+    
+    func forward() -> Variable {
+        return Variable(sqrt(leftVariable!.value), self)
+    }
+    
+    func backward(with variableFromAbove: Variable) {
+        leftVariable!.gradient +=  -1 / sqrt(4 * leftVariable!.value) * variableFromAbove.gradient
+    }
+    
+    var description: String {
+        return "CosLayer"
+    }
+    
+}
