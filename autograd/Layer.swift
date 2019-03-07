@@ -10,56 +10,37 @@ import Foundation
 
 
 protocol Layer {
-    var leftVariable: Variable? { get set }
-    var rightVariable: Variable? { get set }
-    
-    init(_ variableOne:Variable, _ variableTwo:Variable)
     func forward() -> Variable
-    mutating func backward(with variableFromAbove:Variable)
-
-}
-
-extension Layer {
-    func printTree() {
-        print(self)
-        leftVariable?.printTree()
-        rightVariable?.printTree()
-    }
+    func backward(with variableFromAbove:Variable)
 }
 
 class BinaryLayer: Layer, CustomStringConvertible {
-    var leftVariable: Variable?
-    var rightVariable: Variable?
+    var leftVariable: Variable
+    var rightVariable: Variable
     
-    required init(_ variableOne:Variable, _ variableTwo:Variable) {
+    init(_ variableOne:Variable, _ variableTwo:Variable) {
         self.leftVariable = variableOne
         self.rightVariable = variableTwo
     }
     
     func forward() -> Variable {return Variable(0)}
-    
     func backward(with variableFromAbove: Variable) {}
     
     func chainableInternalBackward() {
-        leftVariable!.chainableInternalBackward()
-        rightVariable!.chainableInternalBackward()
+        leftVariable.chainableInternalBackward()
+        rightVariable.chainableInternalBackward()
     }
     
     var description: String {
         return "DefaultBinaryLayer"
     }
-
 }
 
 class UnaryLayer: Layer, CustomStringConvertible {
-    // here we work only with left variable
-    // right is just nil
-    var leftVariable: Variable?
-    var rightVariable: Variable?
-    required init(_ variableOne:Variable, _ variableTwo:Variable) {} // just to conform protocol
+    var variable: Variable
     
     init(_ variable: Variable) {
-        self.leftVariable = variable
+        self.variable = variable
     }
     
     func forward() -> Variable {return Variable(0)}
@@ -67,11 +48,9 @@ class UnaryLayer: Layer, CustomStringConvertible {
     func backward(with variableFromAbove: Variable) {}
     
     func chainableInternalBackward() {
-        leftVariable!.chainableInternalBackward()
+        variable.chainableInternalBackward()
     }
-    
     var description: String {
         return "DefaultUnaryLayer"
     }
-    
 }

@@ -29,6 +29,11 @@ func /(left: Variable, right: Variable) -> Variable {
     return parentLayer.forward()
 }
 
+func pow(_ left: Variable, _ right: Variable) -> Variable {
+    let parentLayer = PowLayer(left, right)
+    return parentLayer.forward()
+}
+
 func sin(_ variable: Variable) -> Variable {
     let parentLayer = SinLayer(variable)
     return parentLayer.forward()
@@ -56,6 +61,7 @@ func tan(_ variable: Variable) -> Variable {
 }
 
 func log(_ variable: Variable) -> Variable {
-    let parentLayer  = LogLayer(variable)
+    let parentLayer = LogLayer(variable)
     return parentLayer.forward()
 }
+

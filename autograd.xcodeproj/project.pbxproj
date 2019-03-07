@@ -49,7 +49,6 @@
 		2628D4AC222DA03D00E0F441 = {
 			isa = PBXGroup;
 			children = (
-				26FB7AEC222FDBB300246656 /* autogradComplicated */,
 				2628D4B7222DA03D00E0F441 /* autograd */,
 				2628D4B6222DA03D00E0F441 /* Products */,
 			);
@@ -73,13 +72,6 @@
 				26FB7AED2230151C00246656 /* LayersRealisation.swift */,
 			);
 			path = autograd;
-			sourceTree = "<group>";
-		};
-		26FB7AEC222FDBB300246656 /* autogradComplicated */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = autogradComplicated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

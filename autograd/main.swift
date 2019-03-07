@@ -10,10 +10,11 @@ import Foundation
 
 var a = Variable(5)
 var b = Variable(10)
-var c = Variable(15)
-var d = a * a * a * a + b * b * b
+var c = Variable(2)
+var d = pow(a,c) + pow(b,c)
 d.backward()
 
+print(d)
 print(a)
 print(b)
 print(c)

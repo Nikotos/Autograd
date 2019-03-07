@@ -34,10 +34,4 @@ class Variable: CustomStringConvertible {
     func chainableInternalBackward() {
         parentLayer?.backward(with: self)
     }
-    
-    func printTree() {
-        print(self)
-        self.parentLayer?.printTree()
-        
-    }
 }
