@@ -39,7 +39,6 @@ func sin(_ variable: Variable) -> Variable {
     return parentLayer.forward()
 }
 
-
 func cos(_ variable: Variable) -> Variable {
     let parentLayer = CosLayer(variable)
     return parentLayer.forward()
@@ -65,3 +64,12 @@ func log(_ variable: Variable) -> Variable {
     return parentLayer.forward()
 }
 
+func pow(_ variable: Variable, _ degree: Float) -> Variable {
+    let parentLayer = UnaryPowLayer(variable, degree)
+    return parentLayer.forward()
+}
+
+func pow(_ variable: Variable, _ degree: Int) -> Variable {
+    let parentLayer = UnaryPowLayer(variable, Float(degree))
+    return parentLayer.forward()
+}

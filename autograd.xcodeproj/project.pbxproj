@@ -12,6 +12,7 @@
 		2628D4C2222DA27700E0F441 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2628D4C1222DA27700E0F441 /* Layer.swift */; };
 		26FB7AEE2230151C00246656 /* LayersRealisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB7AED2230151C00246656 /* LayersRealisation.swift */; };
 		26FB7AF02230169700246656 /* VariablesMethodsOverload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB7AEF2230169700246656 /* VariablesMethodsOverload.swift */; };
+		26FB9A6D223284F00015BFE8 /* LearnableLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB9A6C223284F00015BFE8 /* LearnableLayers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		2628D4C1222DA27700E0F441 /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		26FB7AED2230151C00246656 /* LayersRealisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayersRealisation.swift; sourceTree = "<group>"; };
 		26FB7AEF2230169700246656 /* VariablesMethodsOverload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariablesMethodsOverload.swift; sourceTree = "<group>"; };
+		26FB9A6C223284F00015BFE8 /* LearnableLayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnableLayers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				2628D4B8222DA03D00E0F441 /* main.swift */,
 				2628D4BF222DA08B00E0F441 /* Variable.swift */,
 				26FB7AEF2230169700246656 /* VariablesMethodsOverload.swift */,
+				26FB9A6C223284F00015BFE8 /* LearnableLayers.swift */,
 				2628D4C1222DA27700E0F441 /* Layer.swift */,
 				26FB7AED2230151C00246656 /* LayersRealisation.swift */,
 			);
@@ -131,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FB9A6D223284F00015BFE8 /* LearnableLayers.swift in Sources */,
 				2628D4C2222DA27700E0F441 /* Layer.swift in Sources */,
 				2628D4B9222DA03D00E0F441 /* main.swift in Sources */,
 				2628D4C0222DA08B00E0F441 /* Variable.swift in Sources */,

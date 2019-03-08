@@ -13,6 +13,8 @@ class Variable: CustomStringConvertible {
     var gradient = Float(0)
     var parentLayer: Layer?
     
+    var doCalculateGradient:Bool = true
+    
     init(_ value: Float) {
         self.value = value
     }
@@ -20,6 +22,10 @@ class Variable: CustomStringConvertible {
     init(_ value: Float, _ parentLayer: Layer) {
         self.value = value
         self.parentLayer = parentLayer
+    }
+    
+    init (_ value: Float, doCalculateGradient flag: Bool) {
+        self.doCalculateGradient = flag
     }
     
     var description: String {
@@ -32,6 +38,8 @@ class Variable: CustomStringConvertible {
     }
     
     func chainableInternalBackward() {
-        parentLayer?.backward(with: self)
+        if doCalculateGradient {
+            parentLayer?.backward(with: self)
+        }
     }
 }

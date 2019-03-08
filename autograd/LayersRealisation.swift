@@ -179,3 +179,22 @@ class LogLayer: UnaryLayer {
     }
 }
 
+
+class UnaryPowLayer: UnaryLayer {
+    var degree: Float
+    
+    init(_ variable: Variable, _ degree: Float) {
+        self.degree = degree
+        super.init(variable)
+    }
+    override func forward() -> Variable {
+        return Variable(pow(variable.value, degree), self)
+    }
+    override func backward(with variableFromAbove: Variable) {
+        variable.gradient +=  degree * pow(variable.value, degree - 1) * variableFromAbove.gradient
+        super.chainableInternalBackward()
+    }
+    override var description: String {
+        return "TanLayer"
+    }
+}

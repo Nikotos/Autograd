@@ -8,15 +8,14 @@
 
 import Foundation
 
-var a = Variable(5)
+var a = Variable(1.1)
 var b = Variable(10)
 var c = Variable(2)
-var d = pow(a,c) + pow(b,c)
+var model = LearnablePolynomialModule(a, 10)
+var d = model.forward()
 d.backward()
 
-print(d)
+
 print(a)
-print(b)
-print(c)
 
 
