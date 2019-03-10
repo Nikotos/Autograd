@@ -19,26 +19,39 @@ class Optimizer {
     var params = [String : Float]()
     var amountOfSteps: Int
     
+    var stat = [String: [Float]]()
+    
     init(model: Module, dataset: Dataset, criterion: @escaping (Variable, Variable) -> Variable,
          amountOfSteps: Int, learningRate: Float, regularisation: Float) {
         self.model = model
         self.dataset = dataset
         self.criterion = criterion
         self.amountOfSteps = amountOfSteps
-        self.params["learningRate"] = learningRate
+        self.params["lr"] = learningRate
         self.params["reg"] = regularisation
+        
+        self.stat["loss"] = [Float]()
     }
     
-    private func step() {
-        let (x,y) = dataset.get(at: Int.random(in: 0..<dataset.len))
-        let result = model.forward(x)
-        let loss = criterion(result, y)
+    private func step() -> Float {
+        var loss = Variable(0.0)
+        for _ in 0...10 {
+            let (x,y) = dataset.get(at: Int.random(in: 0..<dataset.len))
+            let result = model.forward(x)
+            loss = loss + criterion(result, y)
+        }
+        loss = loss / Variable(10)
         model.zeroGrad()
         loss.backward()
+        model.defaultUpdateWeights(with: self.params["lr"]!)
+        return loss.value
     }
     
     func run() {
-        
+        for _ in 0..<self.amountOfSteps {
+            let loss = step()
+            stat["loss"]?.append(loss)
+        }
     }
 }
 

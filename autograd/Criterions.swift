@@ -12,8 +12,12 @@
 
 import Foundation
 
+func L1Loss(result: Variable, target: Variable) -> Variable {
+    if result.value > target.value { return result - target }
+    else {return target - result }
+}
+
 
 func L2Loss(result: Variable, target: Variable) -> Variable {
-    print("hello)")
-    return sqrt(pow(result, 2) + pow(target, 2))
+    return pow(result - target, 2)
 }
