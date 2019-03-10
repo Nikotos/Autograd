@@ -5,6 +5,7 @@
 //  Created by Oak Nick on 06/03/2019.
 //  Copyright © 2019 Oak Nick. All rights reserved.
 //
+//  Implementation of computational units - i.e. blocks 
 
 import Foundation
 

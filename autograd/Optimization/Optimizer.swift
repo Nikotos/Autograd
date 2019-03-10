@@ -6,7 +6,10 @@
 //  Copyright © 2019 Oak Nick. All rights reserved.
 //
 //
-// in progress
+// Optimization of our model based on dataset 
+
+
+
 import Foundation
 
 

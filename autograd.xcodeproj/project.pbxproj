@@ -74,16 +74,40 @@
 			isa = PBXGroup;
 			children = (
 				2628D4B8222DA03D00E0F441 /* main.swift */,
-				26FB9A702232944D0015BFE8 /* Optimizer.swift */,
-				26B678F7223430D9005C4F92 /* Criterions.swift */,
-				26B678F52233A624005C4F92 /* Dataset.swift */,
+				26B678F92235C313005C4F92 /* Variable */,
+				26B678FB2235C351005C4F92 /* Optimization */,
+				26B678FA2235C33F005C4F92 /* Layers */,
+			);
+			path = autograd;
+			sourceTree = "<group>";
+		};
+		26B678F92235C313005C4F92 /* Variable */ = {
+			isa = PBXGroup;
+			children = (
 				2628D4BF222DA08B00E0F441 /* Variable.swift */,
 				26FB7AEF2230169700246656 /* VariablesMethodsOverload.swift */,
+			);
+			path = Variable;
+			sourceTree = "<group>";
+		};
+		26B678FA2235C33F005C4F92 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
 				26FB9A6C223284F00015BFE8 /* LearnableModules.swift */,
 				2628D4C1222DA27700E0F441 /* Layer.swift */,
 				26FB7AED2230151C00246656 /* LayersRealisation.swift */,
 			);
-			path = autograd;
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		26B678FB2235C351005C4F92 /* Optimization */ = {
+			isa = PBXGroup;
+			children = (
+				26B678F52233A624005C4F92 /* Dataset.swift */,
+				26B678F7223430D9005C4F92 /* Criterions.swift */,
+				26FB9A702232944D0015BFE8 /* Optimizer.swift */,
+			);
+			path = Optimization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

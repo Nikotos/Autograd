@@ -5,6 +5,8 @@
 //  Created by Oak Nick on 06/03/2019.
 //  Copyright © 2019 Oak Nick. All rights reserved.
 //
+//  Operators overloading for Variable Type
+
 
 import Foundation
 

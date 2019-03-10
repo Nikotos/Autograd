@@ -5,6 +5,8 @@
 //  Created by Oak Nick on 04/03/2019.
 //  Copyright © 2019 Oak Nick. All rights reserved.
 //
+//  Basic Architecture of computational graph autograd system
+
 
 import Foundation
 

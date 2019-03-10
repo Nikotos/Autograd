@@ -6,8 +6,7 @@
 //  Copyright © 2019 Oak Nick. All rights reserved.
 //
 //
-//  Implementation of several Criterions
-//
+//  Implementation of several Criterions (i.e. loss functions)
 //
 
 import Foundation

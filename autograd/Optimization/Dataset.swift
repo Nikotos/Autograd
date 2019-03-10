@@ -5,6 +5,8 @@
 //  Created by Oak Nick on 09/03/2019.
 //  Copyright © 2019 Oak Nick. All rights reserved.
 //
+//  Dataset implementation to provide learning module (i mean optimizer) with data
+//
 
 import Foundation
 

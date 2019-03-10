@@ -5,6 +5,9 @@
 //  Created by Oak Nick on 08/03/2019.
 //  Copyright © 2019 Oak Nick. All rights reserved.
 //
+//
+//  Learnable modules based on autograd pipilene
+//  You only need to write a forward pass for your module
 
 import Foundation
 
@@ -14,6 +17,8 @@ protocol Module {
     func defaultUpdateWeights(with learningRate: Float)
 }
 
+
+// Polinomial layer as an example
 
 class LearnablePolynomialModule: Module, CustomStringConvertible {
     var parameters: [Variable]
