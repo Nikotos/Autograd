@@ -23,7 +23,7 @@ class BinaryLayer: Layer, CustomStringConvertible {
         self.rightVariable = variableTwo
     }
     
-    func forward() -> Variable {return Variable(0)}
+    func forward() -> Variable { return Variable(0) }
     func backward(with variableFromAbove: Variable) {}
     
     func chainableInternalBackward() {

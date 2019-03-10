@@ -42,4 +42,8 @@ class Variable: CustomStringConvertible {
             parentLayer?.backward(with: self)
         }
     }
+    
+    func zeroGrad() {
+        self.gradient = 0
+    }
 }
