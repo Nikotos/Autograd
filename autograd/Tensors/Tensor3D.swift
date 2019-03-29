@@ -44,6 +44,8 @@ class Tensor3D {
     }
 }
 
+infix operator •
+
 extension Tensor3D: CustomStringConvertible {
     var description: String {
         var res = String()
@@ -61,7 +63,7 @@ extension Tensor3D: CustomStringConvertible {
                                            _ function: (Matrix, Matrix) -> Matrix) -> Tensor3D {
         assert(left.count == right.count)
         var result = [Matrix]()
-        result.reserveCapacity(left.count) 
+        result.reserveCapacity(left.count)
         for i in 0..<left.count {result.append(function(left.data[i], right.data[i]))}
         return Tensor3D(result)
     }
@@ -71,13 +73,13 @@ extension Tensor3D: CustomStringConvertible {
     static func - (_ left: Tensor3D, _ right: Tensor3D) -> Tensor3D {
         return self.performElementwise(left, right, {$0 - $1})
     }
+    
     //
-    //  Scalar multiplication
+    //  Elementwise multiplication, i.e. applying filter
     //
-    /*
-    static func *(_ left: Tensor3D, _ right: Tensor3D) -> Variable {
+    static func •(_ left: Tensor3D, _ right: Tensor3D) -> Tensor3D {
         assert(left.count == right.count)
-        return self.performElementwise(left, right, {$0 * $1}).data.reduce(Variable(0)) {$0 + $1}
+        return self.performElementwise(left, right, {$0 * $1})
     }
- */
+
 }
