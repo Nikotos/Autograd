@@ -7,7 +7,7 @@
 //
 // Version 0.0 - Vanilla
 // Tensors is made by arrays of Variales
-// In other wirds - computational graph still have "Variables" in its nodes
+// In other words - computational graph still have "Variables" in its nodes
 // Its not really efficient, but it is quite simple to implement 
 
 
@@ -68,6 +68,9 @@ extension Vector: CustomStringConvertible {
     static func - (_ left: Vector, _ right: Vector) -> Vector {
         return self.performElementwise(left, right, {$0 - $1})
     }
+    //
+    //  Scalar multiplication
+    //
     static func *(_ left: Vector, _ right: Vector) -> Variable {
         assert(left.count == right.count)
         return self.performElementwise(left, right, {$0 * $1}).data.reduce(Variable(0)) {$0 + $1}

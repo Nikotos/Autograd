@@ -12,6 +12,7 @@
 		2628D4C2222DA27700E0F441 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2628D4C1222DA27700E0F441 /* Layer.swift */; };
 		26867B26224E820C00B882DB /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26867B25224E820C00B882DB /* Matrix.swift */; };
 		26867B28224E820F00B882DB /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26867B27224E820F00B882DB /* Vector.swift */; };
+		26867B2B224E8CD100B882DB /* Tensor3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26867B2A224E8CD100B882DB /* Tensor3D.swift */; };
 		26B678F62233A624005C4F92 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B678F52233A624005C4F92 /* Dataset.swift */; };
 		26B678F8223430D9005C4F92 /* Criterions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B678F7223430D9005C4F92 /* Criterions.swift */; };
 		26FB7AEE2230151C00246656 /* LayersRealisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB7AED2230151C00246656 /* LayersRealisation.swift */; };
@@ -39,6 +40,7 @@
 		2628D4C1222DA27700E0F441 /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		26867B25224E820C00B882DB /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		26867B27224E820F00B882DB /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		26867B2A224E8CD100B882DB /* Tensor3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tensor3D.swift; sourceTree = "<group>"; };
 		26B678F52233A624005C4F92 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
 		26B678F7223430D9005C4F92 /* Criterions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Criterions.swift; sourceTree = "<group>"; };
 		26FB7AED2230151C00246656 /* LayersRealisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayersRealisation.swift; sourceTree = "<group>"; };
@@ -89,8 +91,9 @@
 		26867B29224E823100B882DB /* Tensors */ = {
 			isa = PBXGroup;
 			children = (
-				26867B25224E820C00B882DB /* Matrix.swift */,
 				26867B27224E820F00B882DB /* Vector.swift */,
+				26867B25224E820C00B882DB /* Matrix.swift */,
+				26867B2A224E8CD100B882DB /* Tensor3D.swift */,
 			);
 			path = Tensors;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				2628D4C2222DA27700E0F441 /* Layer.swift in Sources */,
 				26FB9A712232944D0015BFE8 /* Optimizer.swift in Sources */,
 				2628D4B9222DA03D00E0F441 /* main.swift in Sources */,
+				26867B2B224E8CD100B882DB /* Tensor3D.swift in Sources */,
 				2628D4C0222DA08B00E0F441 /* Variable.swift in Sources */,
 				26867B26224E820C00B882DB /* Matrix.swift in Sources */,
 				26FB7AF02230169700246656 /* VariablesMethodsOverload.swift in Sources */,

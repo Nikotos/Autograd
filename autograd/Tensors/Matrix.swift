@@ -64,7 +64,7 @@ extension Matrix: CustomStringConvertible {
     }
     
     static func shapedForMul(_ left: Matrix, _ right: Matrix) -> Bool {
-        return left.shape[0] == right.shape[1]
+        return left.shape[1] == right.shape[0]
     }
     
     static private func performElementwise(_ left: Matrix, _ right: Matrix,
@@ -98,6 +98,10 @@ extension Matrix: CustomStringConvertible {
         return self.performElementwise(left, right, {$0 - $1})
     }
     
+    //
+    //  Here I use transpose to apply scalar multiplication,
+    //  which I've written in Vector
+    //
     static func *(_ left: Matrix, right: Matrix) -> Matrix {
         assert(shapedForMul(left, right), "Not Appropriate shapes for Multiplicating!")
         let rightT = right.transposed()
@@ -108,6 +112,13 @@ extension Matrix: CustomStringConvertible {
             }
         }
         return result
+    }
+    
+    static func * (_ left: Vector, _ right: Matrix) -> Matrix {
+        return Matrix([left]) * right
+    }
+    static func * (_ left: Matrix, _ right: Vector) -> Matrix {
+        return left * Matrix([right]).transposed()
     }
     
 }

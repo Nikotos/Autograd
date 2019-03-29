@@ -42,5 +42,9 @@ print(d)
 
 */
 
-var c = Matrix([2,7])
+var c = Vector([7])
 var d = Matrix([7,2])
+var a = c * d
+
+var r = Tensor3D([1,2,4])
+print(a)
