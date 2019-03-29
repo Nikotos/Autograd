@@ -50,3 +50,11 @@ class Variable: CustomStringConvertible {
         self.gradient = 0
     }
 }
+
+
+
+extension Variable {
+    public static func random(in myRange: ClosedRange<Float32>) -> Variable {
+        return Variable(Float32.random(in: myRange))
+    }
+}

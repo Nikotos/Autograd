@@ -176,7 +176,7 @@ class LogLayer: UnaryLayer {
         super.chainableInternalBackward()
     }
     override var description: String {
-        return "TanLayer"
+        return "LogLayer"
     }
 }
 
@@ -196,6 +196,6 @@ class UnaryPowLayer: UnaryLayer {
         super.chainableInternalBackward()
     }
     override var description: String {
-        return "TanLayer"
+        return "UnaryPowLayer"
     }
 }
